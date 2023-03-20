@@ -28,10 +28,4 @@ public class ApplicationExceptionHandler {
         return "Record not found";
     }
 
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(RecordNotFoundException.class)
-    String handleNoSuchElementException(RecordNotFoundException ex){
-        return ex.getMessage();
-    }
 }

@@ -1,6 +1,5 @@
 package com.example.project.service.impl;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.project.convertor.UserConvertor;
 import com.example.project.dto.LoginRequest;
 import com.example.project.dto.UserPasswordUpdate;
@@ -12,6 +11,7 @@ import com.example.project.repository.UserRepository;
 import com.example.project.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService {
 
     private final UserConvertor userConvertor;
     private final UserRepository userRepository;
-    private final BCrypt bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
-    public UserServiceImpl(UserConvertor userConvertor, UserRepository userRepository, BCrypt bCryptPasswordEncoder) {
+    public UserServiceImpl(UserConvertor userConvertor, UserRepository userRepository,BCryptPasswordEncoder bCryptPasswordEncoder ) {
         this.userConvertor = userConvertor;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;

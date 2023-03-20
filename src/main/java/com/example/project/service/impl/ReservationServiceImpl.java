@@ -48,7 +48,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Reservation findByUser(Long id) throws RecordNotFoundException {
-        return reservationRepository.findByUser(String.valueOf(id)).orElseThrow(()->new RecordNotFoundException("Reservation not found"));
+        return reservationRepository.findByClient(String.valueOf(id)).orElseThrow(()->new RecordNotFoundException("Reservation not found"));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation findByDate(Date date) {
         try {
-            return reservationRepository.findByDate(date).orElseThrow(()->new RecordNotFoundException("Reservation not found"));
+            return reservationRepository.findByRentDate(date).orElseThrow(()->new RecordNotFoundException("Reservation not found"));
         } catch (RecordNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -67,6 +67,11 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void updateCarRes(Reservation reservedCar) {
+
+    }
+
+    @Override
+    public void updateDates(Reservation rentDate) {
 
     }
 

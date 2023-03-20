@@ -14,10 +14,10 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
 
     static void updateDates(Date date, Date endDate) {
     }
-
-    Optional<Reservation> getByUser (String name);
+    //тук много е важно след findBy, да бъде името на пропърти което го има в Reservation, понеже hibernate трябва да генерира sql заявката
+    Optional<Reservation> findByClient (String client);
     Optional<Reservation> findByCar (Long id);
-    Optional<Reservation> findByDate (Date date);
+    Optional<Reservation> findByRentDate (Date rentDate);
     Optional<Reservation> findById (Long id);
 
     @Transactional

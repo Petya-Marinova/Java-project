@@ -11,7 +11,7 @@ public interface ReservationService {
     void deleteReservation (Long id);
     Reservation findById(Long id) throws RecordNotFoundException;
     Reservation findByUser (Long id) throws RecordNotFoundException;
-    Reservation findByCar (Long id ) throws RecordNotFoundException;
+    Reservation findByCar (Long id) throws RecordNotFoundException;
     Reservation findByDate (Date date) ;
 
     void updateCarRes (Reservation reservedCar);

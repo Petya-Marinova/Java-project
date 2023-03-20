@@ -38,7 +38,7 @@ public class ReservationController {
     ResponseEntity<ReservationResponse> getByUser(@RequestBody Long id) throws RecordNotFoundException {
         return ResponseEntity
                 .status(HttpStatus.FOUND)
-                .body((ReservationResponse) reservationConvertor.toReservation(reservationServiceImpl.findByUser(id)));
+                .body( reservationConvertor.toReservationResponse(reservationServiceImpl.findByUser(id)));
     }
 
     @DeleteMapping(path = "/{id}")
@@ -58,8 +58,13 @@ public class ReservationController {
     }
 
     @PostMapping("update/{resid}")
-    public ResponseEntity<String> update(@PathVariable Long id, int carNumber, @ModelAttribute Reservation reservation) {
-        Reservation res = ReservationService.findById(reservation.getId());
+    public ResponseEntity<String> update(@PathVariable Long id, int carNumber, @ModelAttribute Reservation reservation){
+        Reservation res = new Reservation();
+        try{
+           res = reservationService.findById(reservation.getId());
+        }catch (RuntimeException exception){
+
+        }
         res.setRentDate(reservation.getRentDate());
         res.setEndDate(reservation.getEndDate());
         reservationService.updateDates(reservation);

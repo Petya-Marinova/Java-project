@@ -1,5 +1,6 @@
 package com.example.project.dto;
 
+import com.example.project.entity.User;
 import lombok.Builder;
 
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.Date;
 public class ReservationResponse {
 
     private Long id;
-    private String user;
+    private User user;
     private String brand;
     private String model;
     private Date startDate;

@@ -3,7 +3,6 @@ package com.example.project.controller;
 import com.example.project.convertor.UserConvertor;
 import com.example.project.dto.LoginRequest;
 import com.example.project.dto.UserPasswordUpdate;
-import com.example.project.dto.UserRequest;
 import com.example.project.dto.UserResponse;
 import com.example.project.entity.User;
 import com.example.project.exeption.RecordNotFoundException;
